@@ -38,9 +38,9 @@ class BMPImage {
 public:
 	this(Ref!VNode file) {
 		NodeContext nc;
-		if (file.open(nc, FileDescriptorMode.read))
+		if ((*file).open(nc, FileDescriptorMode.read))
 			return;
-		read(file, nc, _bitmap);
+		read(*file, nc, _bitmap);
 		_data = new Color[_bitmap.width * _bitmap.height];
 		size_t offset = _bitmap.fileHeader.dataOffset;
 		int pad = _bitmap.width % 4;
@@ -107,7 +107,7 @@ private:
 		for (int y = _bitmap.height - 1; y >= 0; y--) {
 			for (int x = 0; x < _bitmap.width; x++) {
 				nc.offset = offset += bytesPerPixel;
-				file.read(nc, buf);
+				(*file).read(nc, buf);
 
 				immutable ubyte r = rid != ubyte.max ? buf[rid] : 0;
 				immutable ubyte g = gid != ubyte.max ? buf[gid] : 0;
