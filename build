@@ -157,6 +157,15 @@
 			"input": "Userspace/DLogo/obj/*.o"
 		},
 
+		"Userspace/Game/obj/DCode.o": {
+			"processor": "user-dc",
+			"input": "Userspace/Game/src/*.d"
+		},
+		"Initrd/Binary/Game": {
+			"processor": "user-ld",
+			"input": "Userspace/Game/obj/*.o"
+		},
+
 		"Kernel/obj/DCode.o": {
 			"processor": "dc",
 			"input": "Kernel/src/*.d"
@@ -198,6 +207,7 @@
 		"Initrd/Binary/HelloWorld",
 		"Initrd/Binary/Cat",
 		"Initrd/Binary/DLogo",
+		"Initrd/Binary/Game",
 		"Disk/boot/PowerNex.dsk",
 		"PowerNex.iso"
 	]
